@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>对对碰</title>
+	<meta name="viewport" id="viewport" content="target-densitydpi=device-dpi, width=640, user-scalable=no">
+	<script>
+	(function(isAndroid, viewport){
+		if (isAndroid) viewport.setAttribute("content", "target-densitydpi="+ (640 / window.screen.width * window.devicePixelRatio * 160) +", width=640, user-scalable=no");
+	})(/android/i.test(navigator.userAgent), document.getElementById("viewport"));
+	</script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="stage">
+	<span id="score">0</span>
+	<div id="time"><div class="value"></div></div>
+
+	<div id="grid"></div>
+</div>
+
+<div class="layer" id="startLayer">
+	<button type="button" id="btnStart">开始</button>
+</div>
+<div class="layer" id="overLayer">
+	<button type="button" id="btnAgain">再来一次</button>
+</div>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/hammer.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

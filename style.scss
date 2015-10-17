@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 32px;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#stage {
+	position: relative;
+	width: 480px;
+	margin: 40px auto;
+
+	.points {
+		position: absolute;
+		top: .16em;
+		left: 3em;
+		animation: points 1s;
+		font-size: .7em;
+	}
+}
+@keyframes points {
+	from { transform: translate3d(0, 100%, 0); opacity: 0 }
+	40%, 60% { transform: translate3d(0, 0, 0); opacity: 1 }
+	to { opacity: 0 }
+}
+
+#score {
+	float: left;
+}
+
+#time {
+	width: 288px;
+	height: 20px;
+	background: #EEE;
+	float: right;
+	margin-top: 5px;
+	margin-bottom: 40px;
+
+	.value {
+		background: #E91E63;
+		width: 100%;
+		height: 100%;
+		color: #fff;
+		text-align: center;
+		font-size: 16px;
+		line-height: 20px;
+		transition: 1s linear;
+	}
+}
+
+#grid {
+	margin: 40px auto 0;
+	position: relative;
+	clear: both;
+
+	.tile {
+		width: 120px;
+		height: 120px;
+		position: absolute;
+		border: 4px solid #fff;
+		float: left;
+		transition: top .4s linear, left .4s linear, transform .4s linear, opacity .4s linear;
+		animation: tile .4s linear backwards;
+		z-index: 1;
+		background: no-repeat 50%;
+		transform: translate3d(0,0,0);
+
+		&.selected {
+			box-shadow: inset 0 0 0 4px #000;
+			z-index: 2;
+		}
+
+		&.type-1 { background-color: #9C27B0 }
+		&.type-2 { background-color: #F44336 }
+		&.type-3 { background-color: #2196F3 }
+		&.type-4 { background-color: #009688 }
+		&.type-all { background-color: #000; border-radius: 50% }
+
+		&.killed { pointer-events: none; transform: scale(1.2); opacity: 0 }
+	}
+}
+@keyframes tile {
+    from { transform: scale(.5); opacity: 0 }
+}
+
+.layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,.7);
+	z-index: 3;
+	display: none;
+
+	button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		border: 2px solid #333;
+		width: 220px;
+		height: 90px;
+		background: none;
+		font-size: 1em;
+	}
+}
+
+#startLayer {
+	display: block;
+}
